@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EverJoyChocolate | Artisan Premium Chocolates</title>
+    <title>EverJoyChocolate | Artisan Belgian Chocolates</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -18,41 +16,25 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        chocolate: {
-                            50: '#fdf8f6',
-                            100: '#f2e8e5',
-                            200: '#eaddd7',
-                            300: '#e0cec7',
-                            400: '#d2bab0',
-                            500: '#a1887f',
-                            600: '#8d6e63',
-                            700: '#6d4c41',
-                            800: '#4e342e',
-                            900: '#3e2723',
+                        rose: {
+                            50: '#fdf2f2',
+                            100: '#fce7e7',
+                            200: '#fbd0d0',
+                            300: '#f7a8a8',
+                            400: '#f27575',
+                            500: '#e84c4c',
+                            600: '#d62d2d',
+                            800: '#9e1e1e',
+                            900: '#831c1c',
                         },
                         gold: {
                             400: '#d4af37',
                             500: '#c5a028',
                             600: '#b8941f',
-                        }
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-                        'slide-in': 'slideIn 0.6s ease-out forwards',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
                         },
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        slideIn: {
-                            '0%': { transform: 'translateX(-100%)' },
-                            '100%': { transform: 'translateX(0)' },
+                        chocolate: {
+                            800: '#4a3b2a',
+                            900: '#3d3021',
                         }
                     }
                 }
@@ -61,12 +43,8 @@
     </script>
     <style>
         .glass-effect {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        .chocolate-gradient {
-            background: linear-gradient(135deg, #3e2723 0%, #6d4c41 50%, #8d6e63 100%);
         }
         .gold-gradient {
             background: linear-gradient(135deg, #d4af37 0%, #f4e5c2 50%, #d4af37 100%);
@@ -95,44 +73,55 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
-        .product-card:hover .product-overlay {
-            opacity: 1;
-        }
         .product-overlay {
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        input:focus, textarea:focus {
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+        input:focus, textarea:focus, select:focus {
             outline: none;
             border-color: #d4af37;
             box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
         }
+        .allergen-badge {
+            font-size: 0.65rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
     </style>
 </head>
-<body class="font-sans text-chocolate-900 bg-chocolate-50 antialiased">
+<body class="font-sans text-gray-800 bg-rose-50 antialiased">
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 px-6 lg:px-12">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2 group">
-                <div class="w-10 h-10 rounded-full gold-gradient flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                    <i data-lucide="candy" class="w-6 h-6 text-white"></i>
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full bg-rose-800 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <i data-lucide="heart" class="w-7 h-7 text-white"></i>
                 </div>
-                <span class="font-serif text-2xl font-bold text-chocolate-900 tracking-tight">EverJoy<span class="text-gold-500">Chocolate</span></span>
+                <div class="flex flex-col">
+                    <span class="font-serif text-2xl font-bold text-rose-900 tracking-tight leading-none">EVERJOY</span>
+                    <span class="text-xs text-rose-600 tracking-widest uppercase">Chocolate</span>
+                </div>
             </a>
             
             <div class="hidden md:flex items-center gap-8">
-                <a href="#home" class="text-sm font-medium hover:text-gold-600 transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gold-500 after:transition-all hover:after:w-full">Home</a>
-                <a href="#collections" class="text-sm font-medium hover:text-gold-600 transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gold-500 after:transition-all hover:after:w-full">Collections</a>
-                <a href="#story" class="text-sm font-medium hover:text-gold-600 transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gold-500 after:transition-all hover:after:w-full">Our Story</a>
-                <a href="#gifting" class="text-sm font-medium hover:text-gold-600 transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gold-500 after:transition-all hover:after:w-full">Gifting</a>
-                <a href="#contact" class="text-sm font-medium hover:text-gold-600 transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gold-500 after:transition-all hover:after:w-full">Contact</a>
+                <a href="#home" class="text-sm font-medium text-gray-700 hover:text-rose-600 transition-colors">Home</a>
+                <a href="#collections" class="text-sm font-medium text-gray-700 hover:text-rose-600 transition-colors">Collections</a>
+                <a href="#moments" class="text-sm font-medium text-gray-700 hover:text-rose-600 transition-colors">Everjoy Moments</a>
+                <a href="#fruits" class="text-sm font-medium text-gray-700 hover:text-rose-600 transition-colors">Fruits</a>
+                <a href="#contact" class="text-sm font-medium text-gray-700 hover:text-rose-600 transition-colors">Contact</a>
             </div>
 
             <div class="flex items-center gap-4">
-                <button onclick="toggleCart()" class="relative p-2 hover:bg-chocolate-100 rounded-full transition-colors">
-                    <i data-lucide="shopping-bag" class="w-6 h-6 text-chocolate-800"></i>
-                    <span id="cart-count" class="absolute -top-1 -right-1 w-5 h-5 bg-gold-500 text-white text-xs rounded-full flex items-center justify-center font-bold">0</span>
+                <button onclick="toggleCart()" class="relative p-2 hover:bg-rose-100 rounded-full transition-colors">
+                    <i data-lucide="shopping-bag" class="w-6 h-6 text-rose-800"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 w-5 h-5 bg-rose-600 text-white text-xs rounded-full flex items-center justify-center font-bold">0</span>
                 </button>
                 <button class="md:hidden p-2" onclick="toggleMobileMenu()">
                     <i data-lucide="menu" class="w-6 h-6"></i>
@@ -141,12 +130,12 @@
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-chocolate-100">
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-rose-100">
             <div class="flex flex-col p-6 gap-4">
-                <a href="#home" class="text-lg font-medium py-2 border-b border-chocolate-100">Home</a>
-                <a href="#collections" class="text-lg font-medium py-2 border-b border-chocolate-100">Collections</a>
-                <a href="#story" class="text-lg font-medium py-2 border-b border-chocolate-100">Our Story</a>
-                <a href="#gifting" class="text-lg font-medium py-2 border-b border-chocolate-100">Gifting</a>
+                <a href="#home" class="text-lg font-medium py-2 border-b border-rose-100">Home</a>
+                <a href="#collections" class="text-lg font-medium py-2 border-b border-rose-100">Collections</a>
+                <a href="#moments" class="text-lg font-medium py-2 border-b border-rose-100">Everjoy Moments</a>
+                <a href="#fruits" class="text-lg font-medium py-2 border-b border-rose-100">Fruits</a>
                 <a href="#contact" class="text-lg font-medium py-2">Contact</a>
             </div>
         </div>
@@ -157,346 +146,363 @@
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="toggleCart()"></div>
         <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl transform transition-transform duration-300 translate-x-full" id="cart-panel">
             <div class="p-6 h-full flex flex-col">
-                <div class="flex justify-between items-center mb-6 border-b border-chocolate-100 pb-4">
-                    <h3 class="font-serif text-2xl font-bold">Your Cart</h3>
-                    <button onclick="toggleCart()" class="p-2 hover:bg-chocolate-100 rounded-full">
+                <div class="flex justify-between items-center mb-6 border-b border-rose-100 pb-4">
+                    <h3 class="font-serif text-2xl font-bold text-rose-900">Your Cart</h3>
+                    <button onclick="toggleCart()" class="p-2 hover:bg-rose-100 rounded-full">
                         <i data-lucide="x" class="w-6 h-6"></i>
                     </button>
                 </div>
                 <div id="cart-items" class="flex-1 overflow-y-auto space-y-4">
-                    <p class="text-chocolate-500 text-center py-8">Your cart is empty</p>
+                    <p class="text-gray-500 text-center py-8">Your cart is empty</p>
                 </div>
-                <div class="border-t border-chocolate-100 pt-4 mt-4">
-                    <div class="flex justify-between mb-4 text-lg font-bold">
+                <div class="border-t border-rose-100 pt-4 mt-4">
+                    <div class="flex justify-between mb-2 text-sm">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">$0.00</span>
+                    </div>
+                    <div class="flex justify-between mb-4 text-sm">
+                        <span>Shipping</span>
+                        <span>Calculated at checkout</span>
+                    </div>
+                    <div class="flex justify-between mb-4 text-lg font-bold text-rose-900">
                         <span>Total</span>
                         <span id="cart-total">$0.00</span>
                     </div>
-                    <button onclick="checkout()" class="w-full py-4 bg-chocolate-800 text-white font-semibold rounded-lg hover:bg-chocolate-900 transition-colors flex items-center justify-center gap-2">
+                    <button onclick="checkout()" class="w-full py-4 bg-rose-800 text-white font-semibold rounded-lg hover:bg-rose-900 transition-colors flex items-center justify-center gap-2">
                         <span>Proceed to Checkout</span>
                         <i data-lucide="arrow-right" class="w-5 h-5"></i>
                     </button>
+                    <p class="text-xs text-center text-gray-500 mt-3">WhatsApp order confirmation will be sent</p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-20">
+    <section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-20 bg-rose-50">
         <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-br from-chocolate-900/90 via-chocolate-800/80 to-chocolate-900/90 z-10"></div>
-            <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=1920&q=80" alt="Luxury Chocolate" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-br from-rose-100/90 via-rose-50/80 to-white/90 z-10"></div>
+            <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=1920&q=80" alt="Luxury Chocolate" class="w-full h-full object-cover opacity-30">
         </div>
         
         <div class="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
-            <div class="text-white space-y-8 animate-fade-in-up">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
-                    <span class="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
-                    <span class="text-sm font-medium tracking-wide">Artisan Crafted Since 2024</span>
+            <div class="space-y-8 animate-fade-in-up">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-100 border border-rose-200">
+                    <span class="w-2 h-2 rounded-full bg-rose-600 animate-pulse"></span>
+                    <span class="text-sm font-medium text-rose-800 tracking-wide">Belgian Chocolate Artistry</span>
                 </div>
-                <h1 class="font-serif text-5xl lg:text-7xl font-bold leading-tight text-shadow">
-                    Indulge in <br/>
-                    <span class="text-transparent bg-clip-text gold-gradient">Pure Bliss</span>
+                <h1 class="font-serif text-5xl lg:text-7xl font-bold leading-tight text-rose-900">
+                    Chocolates for <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-rose-400">Every Occasion</span>
                 </h1>
-                <p class="text-lg text-chocolate-100 max-w-lg leading-relaxed">
-                    Experience the art of chocolate making with our ethically sourced, handcrafted premium chocolates. Each piece tells a story of passion, sustainability, and extraordinary flavor.
+                <p class="text-lg text-gray-700 max-w-lg leading-relaxed">
+                    Handcrafted Belgian chocolates with unique Mediterranean flavors. From kunafa-infused bars to stuffed dates, every piece tells a story of passion and tradition.
                 </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#collections" class="px-8 py-4 bg-gold-500 text-white font-semibold rounded-full hover:bg-gold-600 transition-all transform hover:scale-105 shadow-lg hover:shadow-gold-500/30 flex items-center gap-2">
-                        <span>Shop Collection</span>
+                    <a href="#collections" class="px-8 py-4 bg-rose-800 text-white font-semibold rounded-full hover:bg-rose-900 transition-all transform hover:scale-105 shadow-lg hover:shadow-rose-800/30 flex items-center gap-2">
+                        <span>Shop Now</span>
                         <i data-lucide="arrow-right" class="w-5 h-5"></i>
                     </a>
-                    <a href="#story" class="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-all backdrop-blur-sm">
-                        Our Story
+                    <a href="https://wa.me/17785491630" target="_blank" class="px-8 py-4 border-2 border-rose-800 text-rose-800 font-semibold rounded-full hover:bg-rose-800 hover:text-white transition-all flex items-center gap-2">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        <span>WhatsApp Us</span>
                     </a>
                 </div>
-                <div class="flex items-center gap-8 pt-8 border-t border-white/20">
+                <div class="flex items-center gap-8 pt-8 border-t border-rose-200">
                     <div>
-                        <p class="text-3xl font-bold text-gold-400">15+</p>
-                        <p class="text-sm text-chocolate-200">Unique Flavors</p>
+                        <p class="text-3xl font-bold text-rose-600">15+</p>
+                        <p class="text-sm text-gray-600">Unique Flavors</p>
                     </div>
                     <div>
-                        <p class="text-3xl font-bold text-gold-400">100%</p>
-                        <p class="text-sm text-chocolate-200">Ethical Sourcing</p>
+                        <p class="text-3xl font-bold text-rose-600">100%</p>
+                        <p class="text-sm text-gray-600">Belgian Chocolate</p>
                     </div>
                     <div>
-                        <p class="text-3xl font-bold text-gold-400">5k+</p>
-                        <p class="text-sm text-chocolate-200">Happy Customers</p>
+                        <p class="text-3xl font-bold text-rose-600">Fresh</p>
+                        <p class="text-sm text-gray-600">Daily Made</p>
                     </div>
                 </div>
             </div>
             
             <div class="relative hidden lg:block">
-                <div class="relative animate-float">
-                    <div class="absolute inset-0 bg-gold-400/20 rounded-full blur-3xl transform scale-110"></div>
-                    <img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=800&q=80" alt="Premium Chocolate Box" class="relative rounded-2xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-rose-300/30 rounded-full blur-3xl transform scale-110"></div>
+                    <img src="https://kimi-web-img.moonshot.cn/img/gonutsdubai.com/7b6050efaace254d3b07c77256f78729b1042351.jpg" alt="EverJoy Chocolate Box" class="relative rounded-2xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500 w-full object-cover h-[500px]">
                 </div>
-                <div class="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl max-w-xs animate-fade-in-up" style="animation-delay: 0.3s">
+                <div class="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl max-w-xs">
                     <div class="flex items-center gap-3 mb-3">
-                        <div class="flex text-gold-400">
+                        <div class="flex text-yellow-400">
                             <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                             <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                             <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                             <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                             <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         </div>
-                        <span class="font-bold text-chocolate-900">4.9</span>
+                        <span class="font-bold text-gray-900">5.0</span>
                     </div>
-                    <p class="text-sm text-chocolate-600 italic">"The most exquisite chocolate I've ever tasted. Truly a luxurious experience!"</p>
-                    <p class="text-xs text-chocolate-400 mt-2 font-medium">— Sarah M., Verified Buyer</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <a href="#collections" class="text-white/70 hover:text-white transition-colors">
-                <i data-lucide="chevron-down" class="w-8 h-8"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- Features Bar -->
-    <section class="py-8 bg-white border-b border-chocolate-100">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="flex items-center gap-3 justify-center">
-                    <i data-lucide="leaf" class="w-6 h-6 text-green-600"></i>
-                    <span class="text-sm font-medium">Sustainable Packaging</span>
-                </div>
-                <div class="flex items-center gap-3 justify-center">
-                    <i data-lucide="truck" class="w-6 h-6 text-chocolate-600"></i>
-                    <span class="text-sm font-medium">Free Shipping $50+</span>
-                </div>
-                <div class="flex items-center gap-3 justify-center">
-                    <i data-lucide="shield-check" class="w-6 h-6 text-gold-500"></i>
-                    <span class="text-sm font-medium">Quality Guaranteed</span>
-                </div>
-                <div class="flex items-center gap-3 justify-center">
-                    <i data-lucide="heart" class="w-6 h-6 text-red-500"></i>
-                    <span class="text-sm font-medium">Handcrafted with Love</span>
+                    <p class="text-sm text-gray-600 italic">"The Emerald Crunch is absolutely divine! Best pistachio chocolate I've ever had."</p>
+                    <p class="text-xs text-gray-400 mt-2 font-medium">— Sarah M., Verified Buyer</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Collections Section -->
-    <section id="collections" class="py-24 bg-chocolate-50">
+    <!-- Mediterranean Bars Section -->
+    <section id="collections" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="text-center mb-16 scroll-reveal">
-                <span class="text-gold-600 font-semibold tracking-wider uppercase text-sm">Our Selection</span>
-                <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-4 mb-6 text-chocolate-900">Signature Collections</h2>
-                <p class="text-chocolate-600 max-w-2xl mx-auto text-lg">Discover our curated range of artisan chocolates, each crafted to perfection using the finest ethically sourced cocoa beans.</p>
+                <span class="text-rose-600 font-semibold tracking-wider uppercase text-sm">Signature Collection</span>
+                <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-4 mb-6 text-rose-900">Mediterranean Style Bars</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Luxury Belgian chocolate bars infused with traditional Mediterranean ingredients. $15 per bar.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Golden Dune -->
+                <div class="group bg-rose-50 rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/rockinmama.net/aa5e1acb7b845fc2670dd74afd8c2be97d83cd32.jpg" alt="Golden Dune" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Golden Dune Bar', 15, 'Belgian chocolate with Biscoff cream and kunafa')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-4 right-4 flex flex-col gap-2">
+                            <span class="allergen-badge bg-yellow-100 text-yellow-800">🌾 Gluten</span>
+                            <span class="allergen-badge bg-amber-100 text-amber-800">🥜 Soy</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Golden Dune</h3>
+                        <p class="text-gray-600 text-sm mb-4">Belgian chocolate, Biscoff cream, kunafa, butter. Caramelized cookie perfection.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-rose-800">$15.00</span>
+                            <button onclick="addToCart('Golden Dune Bar', 15, 'Belgian chocolate with Biscoff cream and kunafa')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emerald Crunch -->
+                <div class="group bg-rose-50 rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/images.squarespace-cdn.com/92a72963716f9cef933c759dad8b222e63851586.jpg" alt="Emerald Crunch" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Emerald Crunch Bar', 15, 'Belgian chocolate with pistachio spread and kunafa')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-4 right-4 flex flex-col gap-2">
+                            <span class="allergen-badge bg-green-100 text-green-800">🥜 Nuts</span>
+                            <span class="allergen-badge bg-blue-100 text-blue-800">🥛 Dairy</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Emerald Crunch</h3>
+                        <p class="text-gray-600 text-sm mb-4">Belgian chocolate, pistachio spread (45% pistachios), kunafa, butter.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-rose-800">$15.00</span>
+                            <button onclick="addToCart('Emerald Crunch Bar', 15, 'Belgian chocolate with pistachio spread and kunafa')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Head over HEELS! -->
+                <div class="group bg-rose-50 rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.compartesarabia.com/a7f7f43214c1d90c32fa20226e43810366b45162.jpg" alt="Head over HEELS" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Head over HEELS! Bar', 15, 'Dark chocolate with Nutella and kunafa')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-4 right-4 flex flex-col gap-2">
+                            <span class="allergen-badge bg-orange-100 text-orange-800">🌰 Hazelnuts</span>
+                            <span class="allergen-badge bg-blue-100 text-blue-800">🥛 Dairy</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Head over HEELS!</h3>
+                        <p class="text-gray-600 text-sm mb-4">Belgian Dark chocolate, Nutella, kunafa, butter. Rich and decadent.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-rose-800">$15.00</span>
+                            <button onclick="addToCart('Head over HEELS! Bar', 15, 'Dark chocolate with Nutella and kunafa')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tropical Crunch -->
+                <div class="group bg-rose-50 rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&q=80" alt="Tropical Crunch" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Tropical Crunch Bar', 15, 'Coconut, condensed milk, kunafa, butter')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="allergen-badge bg-blue-100 text-blue-800">🥛 Dairy</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Tropical Crunch</h3>
+                        <p class="text-gray-600 text-sm mb-4">Coconut, condensed milk, kunafa, butter. A tropical paradise in every bite.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-rose-800">$15.00</span>
+                            <button onclick="addToCart('Tropical Crunch Bar', 15, 'Coconut, condensed milk, kunafa, butter')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bites Section -->
+    <section class="py-24 bg-rose-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 scroll-reveal">
+                <span class="text-rose-600 font-semibold tracking-wider uppercase text-sm">Bite-Sized Bliss</span>
+                <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-4 mb-6 text-rose-900">Bites for All</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Assorted bite-sized chocolates perfect for sharing (or not). $30 per box.</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Product 1 -->
+                <!-- Golden Dune Bites -->
                 <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
-                    <div class="relative h-80 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&q=80" alt="Dark Truffle Collection" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/cdn11.bigcommerce.com/ae84b322615e1d05ee2f74074c92e6b3f22bfdbc.jpg" alt="Golden Dune Bites" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                         <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
-                            <button onclick="addToCart('Dark Truffle Collection', 24.99)" class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
+                            <button onclick="addToCart('Golden Dune Bites Box', 30, 'Belgian chocolate, Biscoff cream, kunafa bites')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
                                 <i data-lucide="shopping-bag" class="w-6 h-6"></i>
                             </button>
-                            <button class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
-                                <i data-lucide="eye" class="w-6 h-6"></i>
-                            </button>
                         </div>
-                        <div class="absolute top-4 left-4 bg-gold-500 text-white px-3 py-1 rounded-full text-xs font-bold">BESTSELLER</div>
+                        <div class="absolute top-4 left-4 bg-rose-600 text-white px-3 py-1 rounded-full text-xs font-bold">BESTSELLER</div>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-serif text-xl font-bold mb-2">Dark Truffle Collection</h3>
-                        <p class="text-chocolate-500 text-sm mb-4">Rich 70% cacao ganache centers enrobed in premium dark chocolate.</p>
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Golden Dune Bites</h3>
+                        <p class="text-gray-600 text-sm mb-4">Belgian chocolate, Biscoff cream, kunafa, butter. Box of assorted bites.</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-2xl font-bold text-chocolate-900">$24.99</span>
-                            <button onclick="addToCart('Dark Truffle Collection', 24.99)" class="px-4 py-2 border-2 border-chocolate-800 text-chocolate-800 rounded-lg hover:bg-chocolate-800 hover:text-white transition-colors text-sm font-semibold">
+                            <span class="text-2xl font-bold text-rose-800">$30.00</span>
+                            <button onclick="addToCart('Golden Dune Bites Box', 30, 'Belgian chocolate, Biscoff cream, kunafa bites')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
                                 Add to Cart
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 2 -->
+                <!-- Emerald Crunch Bites -->
                 <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
-                    <div class="relative h-80 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1526081347589-7fa34cc434ce?w=600&q=80" alt="Milk Chocolate Assortment" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/images.squarespace-cdn.com/92a72963716f9cef933c759dad8b222e63851586.jpg" alt="Emerald Crunch Bites" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                         <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
-                            <button onclick="addToCart('Milk Chocolate Assortment', 19.99)" class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
+                            <button onclick="addToCart('Emerald Crunch Bites Box', 30, 'Belgian chocolate, pistachio spread, kunafa bites')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
                                 <i data-lucide="shopping-bag" class="w-6 h-6"></i>
-                            </button>
-                            <button class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
-                                <i data-lucide="eye" class="w-6 h-6"></i>
                             </button>
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-serif text-xl font-bold mb-2">Milk Chocolate Assortment</h3>
-                        <p class="text-chocolate-500 text-sm mb-4">Creamy milk chocolate with hazelnut, caramel, and praline fillings.</p>
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Emerald Crunch Bites</h3>
+                        <p class="text-gray-600 text-sm mb-4">Belgian chocolate, pistachio spread, kunafa, butter. Nutty perfection.</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-2xl font-bold text-chocolate-900">$19.99</span>
-                            <button onclick="addToCart('Milk Chocolate Assortment', 19.99)" class="px-4 py-2 border-2 border-chocolate-800 text-chocolate-800 rounded-lg hover:bg-chocolate-800 hover:text-white transition-colors text-sm font-semibold">
+                            <span class="text-2xl font-bold text-rose-800">$30.00</span>
+                            <button onclick="addToCart('Emerald Crunch Bites Box', 30, 'Belgian chocolate, pistachio spread, kunafa bites')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
                                 Add to Cart
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 3 -->
+                <!-- Caramel Kiss -->
                 <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
-                    <div class="relative h-80 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=600&q=80" alt="White Chocolate Raspberry" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/chocolatestory.com/6044ab29806846462af0d4d9dadac7c8612f6014.jpg" alt="Caramel Kiss" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                         <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
-                            <button onclick="addToCart('White Chocolate Raspberry', 22.99)" class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
+                            <button onclick="addToCart('Caramel Kiss Bites Box', 30, 'Belgian chocolate, caramel ganache bites')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
                                 <i data-lucide="shopping-bag" class="w-6 h-6"></i>
                             </button>
-                            <button class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
-                                <i data-lucide="eye" class="w-6 h-6"></i>
-                            </button>
                         </div>
-                        <div class="absolute top-4 left-4 bg-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold">NEW</div>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-serif text-xl font-bold mb-2">White Chocolate Raspberry</h3>
-                        <p class="text-chocolate-500 text-sm mb-4">Velvety white chocolate infused with real raspberry pieces.</p>
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Caramel Kiss</h3>
+                        <p class="text-gray-600 text-sm mb-4">Belgian chocolate, caramel ganache. Smooth, buttery, irresistible.</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-2xl font-bold text-chocolate-900">$22.99</span>
-                            <button onclick="addToCart('White Chocolate Raspberry', 22.99)" class="px-4 py-2 border-2 border-chocolate-800 text-chocolate-800 rounded-lg hover:bg-chocolate-800 hover:text-white transition-colors text-sm font-semibold">
+                            <span class="text-2xl font-bold text-rose-800">$30.00</span>
+                            <button onclick="addToCart('Caramel Kiss Bites Box', 30, 'Belgian chocolate, caramel ganache bites')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
                                 Add to Cart
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 4 -->
+                <!-- Morning Hit -->
                 <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
-                    <div class="relative h-80 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=600&q=80" alt="Salted Caramel Box" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&q=80" alt="Morning Hit" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                         <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
-                            <button onclick="addToCart('Salted Caramel Box', 27.99)" class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
+                            <button onclick="addToCart('Morning Hit Bites Box', 30, 'Belgian chocolate, caramel ganache, espresso bites')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
                                 <i data-lucide="shopping-bag" class="w-6 h-6"></i>
-                            </button>
-                            <button class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
-                                <i data-lucide="eye" class="w-6 h-6"></i>
                             </button>
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-serif text-xl font-bold mb-2">Salted Caramel Box</h3>
-                        <p class="text-chocolate-500 text-sm mb-4">Buttery caramel with sea salt in dark and milk chocolate shells.</p>
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Morning Hit</h3>
+                        <p class="text-gray-600 text-sm mb-4">Belgian chocolate, caramel ganache, espresso. For coffee lovers.</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-2xl font-bold text-chocolate-900">$27.99</span>
-                            <button onclick="addToCart('Salted Caramel Box', 27.99)" class="px-4 py-2 border-2 border-chocolate-800 text-chocolate-800 rounded-lg hover:bg-chocolate-800 hover:text-white transition-colors text-sm font-semibold">
+                            <span class="text-2xl font-bold text-rose-800">$30.00</span>
+                            <button onclick="addToCart('Morning Hit Bites Box', 30, 'Belgian chocolate, caramel ganache, espresso bites')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
                                 Add to Cart
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 5 -->
+                <!-- Green Gold -->
                 <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
-                    <div class="relative h-80 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1614358760046-8ef0a6417796?w=600&q=80" alt="Vegan Dark Collection" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&q=80" alt="Green Gold" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                         <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
-                            <button onclick="addToCart('Vegan Dark Collection', 26.99)" class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
+                            <button onclick="addToCart('Green Gold Bites Box', 30, 'Pistachio ganache, Belgian chocolate bites')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
                                 <i data-lucide="shopping-bag" class="w-6 h-6"></i>
                             </button>
-                            <button class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
-                                <i data-lucide="eye" class="w-6 h-6"></i>
-                            </button>
                         </div>
-                        <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold">VEGAN</div>
+                        <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold">PISTACHIO</div>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-serif text-xl font-bold mb-2">Vegan Dark Collection</h3>
-                        <p class="text-chocolate-500 text-sm mb-4">Plant-based dark chocolates with 85% cacao and natural sweeteners.</p>
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Green Gold Bites</h3>
+                        <p class="text-gray-600 text-sm mb-4">Pistachio ganache, Belgian chocolate. Pure pistachio heaven.</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-2xl font-bold text-chocolate-900">$26.99</span>
-                            <button onclick="addToCart('Vegan Dark Collection', 26.99)" class="px-4 py-2 border-2 border-chocolate-800 text-chocolate-800 rounded-lg hover:bg-chocolate-800 hover:text-white transition-colors text-sm font-semibold">
+                            <span class="text-2xl font-bold text-rose-800">$30.00</span>
+                            <button onclick="addToCart('Green Gold Bites Box', 30, 'Pistachio ganache, Belgian chocolate bites')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
                                 Add to Cart
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 6 -->
+                <!-- Tropical Bites -->
                 <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
-                    <div class="relative h-80 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1548741487-18d363dc4469?w=600&q=80" alt="Gold Gift Box" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=600&q=80" alt="Tropical Bites" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                         <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
-                            <button onclick="addToCart('Gold Gift Box', 49.99)" class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
+                            <button onclick="addToCart('Tropical Bites Box', 30, 'Belgian chocolate, coconut, kunafa, butter, condensed milk')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
                                 <i data-lucide="shopping-bag" class="w-6 h-6"></i>
                             </button>
-                            <button class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
-                                <i data-lucide="eye" class="w-6 h-6"></i>
-                            </button>
                         </div>
-                        <div class="absolute top-4 left-4 bg-gold-500 text-white px-3 py-1 rounded-full text-xs font-bold">PREMIUM</div>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-serif text-xl font-bold mb-2">Gold Gift Box</h3>
-                        <p class="text-chocolate-500 text-sm mb-4">Luxurious 24-piece assortment in an elegant gold-leaf box.</p>
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Tropical Bites</h3>
+                        <p class="text-gray-600 text-sm mb-4">Belgian chocolate, coconut, kunafa, butter, condensed milk.</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-2xl font-bold text-chocolate-900">$49.99</span>
-                            <button onclick="addToCart('Gold Gift Box', 49.99)" class="px-4 py-2 border-2 border-chocolate-800 text-chocolate-800 rounded-lg hover:bg-chocolate-800 hover:text-white transition-colors text-sm font-semibold">
+                            <span class="text-2xl font-bold text-rose-800">$30.00</span>
+                            <button onclick="addToCart('Tropical Bites Box', 30, 'Belgian chocolate, coconut, kunafa, butter, condensed milk')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
                                 Add to Cart
                             </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-12">
-                <button class="px-8 py-4 border-2 border-chocolate-800 text-chocolate-800 font-semibold rounded-full hover:bg-chocolate-800 hover:text-white transition-all inline-flex items-center gap-2">
-                    <span>View All Products</span>
-                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Story Section -->
-    <section id="story" class="py-24 bg-white relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-gold-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-chocolate-100 rounded-full blur-3xl opacity-50 translate-y-1/2 -translate-x-1/2"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="relative scroll-reveal">
-                    <div class="grid grid-cols-2 gap-4">
-                        <img src="https://images.unsplash.com/photo-1605698802089-6d7f3e974c37?w=400&q=80" alt="Chocolate Making" class="rounded-2xl shadow-lg transform translate-y-8">
-                        <img src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=400&q=80" alt="Cocoa Beans" class="rounded-2xl shadow-lg">
-                    </div>
-                    <div class="absolute -bottom-6 -right-6 bg-chocolate-800 text-white p-6 rounded-2xl shadow-xl">
-                        <p class="font-serif text-3xl font-bold text-gold-400">10+</p>
-                        <p class="text-sm">Years of Excellence</p>
-                    </div>
-                </div>
-                
-                <div class="scroll-reveal">
-                    <span class="text-gold-600 font-semibold tracking-wider uppercase text-sm">Our Story</span>
-                    <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-4 mb-6 text-chocolate-900">Crafting Joy Since 2014</h2>
-                    <div class="space-y-4 text-chocolate-600 leading-relaxed">
-                        <p>
-                            EverJoyChocolate began with a simple mission: to create extraordinary chocolate experiences while maintaining the highest standards of ethical sourcing and sustainability.
-                        </p>
-                        <p>
-                            We partner directly with cocoa farming cooperatives in Ecuador, Ghana, and Madagascar, ensuring fair wages and sustainable practices. Every bean is carefully selected, roasted to perfection, and transformed into artisan chocolates in our small-batch facility.
-                        </p>
-                        <p>
-                            Our master chocolatiers combine traditional techniques with innovative flavors, creating pieces that are as beautiful as they are delicious. From bean to bar, we control every step to ensure unparalleled quality.
-                        </p>
-                    </div>
-                    
-                    <div class="grid grid-cols-3 gap-6 mt-8 pt-8 border-t border-chocolate-100">
-                        <div class="text-center">
-                            <i data-lucide="award" class="w-8 h-8 text-gold-500 mx-auto mb-2"></i>
-                            <p class="font-bold text-chocolate-900">Award Winning</p>
-                        </div>
-                        <div class="text-center">
-                            <i data-lucide="users" class="w-8 h-8 text-gold-500 mx-auto mb-2"></i>
-                            <p class="font-bold text-chocolate-900">Fair Trade</p>
-                        </div>
-                        <div class="text-center">
-                            <i data-lucide="recycle" class="w-8 h-8 text-gold-500 mx-auto mb-2"></i>
-                            <p class="font-bold text-chocolate-900">Eco Packaging</p>
                         </div>
                     </div>
                 </div>
@@ -504,119 +510,441 @@
         </div>
     </section>
 
-    <!-- Gifting Section -->
-    <section id="gifting" class="py-24 bg-chocolate-900 text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-20">
-            <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=1920&q=80" alt="Background" class="w-full h-full object-cover">
-        </div>
-        
-        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-            <div class="text-center mb-16 scroll-reveal">
-                <span class="text-gold-400 font-semibold tracking-wider uppercase text-sm">Perfect Presents</span>
-                <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-4 mb-6">Corporate & Personal Gifting</h2>
-                <p class="text-chocolate-200 max-w-2xl mx-auto text-lg">Make every occasion memorable with our bespoke chocolate gifts, customized packaging, and personalized messages.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:bg-white/20 transition-all scroll-reveal">
-                    <div class="w-14 h-14 bg-gold-500 rounded-full flex items-center justify-center mb-6">
-                        <i data-lucide="gift" class="w-7 h-7 text-white"></i>
-                    </div>
-                    <h3 class="font-serif text-2xl font-bold mb-4">Custom Gift Boxes</h3>
-                    <p class="text-chocolate-200 mb-6">Create your own assortment with our build-a-box feature. Choose from 6 to 24 pieces with custom ribbon colors.</p>
-                    <button class="text-gold-400 font-semibold flex items-center gap-2 hover:gap-3 transition-all">
-                        Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </button>
-                </div>
-
-                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:bg-white/20 transition-all scroll-reveal">
-                    <div class="w-14 h-14 bg-gold-500 rounded-full flex items-center justify-center mb-6">
-                        <i data-lucide="briefcase" class="w-7 h-7 text-white"></i>
-                    </div>
-                    <h3 class="font-serif text-2xl font-bold mb-4">Corporate Orders</h3>
-                    <p class="text-chocolate-200 mb-6">Impress clients and employees with branded chocolate gifts. Volume discounts available for orders over 50 units.</p>
-                    <button class="text-gold-400 font-semibold flex items-center gap-2 hover:gap-3 transition-all">
-                        Get Quote <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </button>
-                </div>
-
-                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:bg-white/20 transition-all scroll-reveal">
-                    <div class="w-14 h-14 bg-gold-500 rounded-full flex items-center justify-center mb-6">
-                        <i data-lucide="calendar" class="w-7 h-7 text-white"></i>
-                    </div>
-                    <h3 class="font-serif text-2xl font-bold mb-4">Subscriptions</h3>
-                    <p class="text-chocolate-200 mb-6">Monthly curated selections delivered to your door. Pause or cancel anytime. Free shipping included.</p>
-                    <button class="text-gold-400 font-semibold flex items-center gap-2 hover:gap-3 transition-all">
-                        Subscribe <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="py-24 bg-chocolate-50">
+    <!-- Dates Section -->
+    <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="text-center mb-16 scroll-reveal">
-                <span class="text-gold-600 font-semibold tracking-wider uppercase text-sm">Testimonials</span>
-                <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-4 text-chocolate-900">What Our Customers Say</h2>
+                <span class="text-rose-600 font-semibold tracking-wider uppercase text-sm">Stuffed & Coated</span>
+                <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-4 mb-6 text-rose-900">Premium Dates Collection</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Medjool dates stuffed with gourmet fillings and coated in Belgian chocolate. $30 per box of 8 dates.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Emerald Crunch Dates -->
+                <div class="group bg-rose-50 rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.ahlandates.com/6da23261e0bac91048446ea995da438bae7d06ca.png" alt="Emerald Crunch Dates" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Emerald Crunch Dates (8pcs)', 30, 'Dates, Belgian chocolate, pistachio cream, kunafa, butter')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-lg font-bold mb-2 text-rose-900">Emerald Crunch Dates</h3>
+                        <p class="text-gray-600 text-sm mb-4">Dates, Belgian chocolate, pistachio cream, kunafa, butter.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-rose-800">$30.00</span>
+                            <span class="text-xs text-gray-500">Box of 8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Golden Dune Dates -->
+                <div class="group bg-rose-50 rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.grocery.com/2e58ec6cf2cdf3d929784aeb75546622723079c4.jpg" alt="Golden Dune Dates" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Golden Dune Dates (8pcs)', 30, 'Dates, Biscoff cream, Belgian chocolate, kunafa, butter')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-lg font-bold mb-2 text-rose-900">Golden Dune Dates</h3>
+                        <p class="text-gray-600 text-sm mb-4">Dates, Biscoff cream, Belgian chocolate, kunafa, butter.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-rose-800">$30.00</span>
+                            <span class="text-xs text-gray-500">Box of 8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tropical Dates -->
+                <div class="group bg-rose-50 rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.grocery.com/2e58ec6cf2cdf3d929784aeb75546622723079c4.jpg" alt="Tropical Dates" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Tropical Dates (8pcs)', 30, 'Dates, Belgian chocolate, coconut, kunafa, butter, condensed milk')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-lg font-bold mb-2 text-rose-900">Tropical Dates</h3>
+                        <p class="text-gray-600 text-sm mb-4">Dates, Belgian chocolate, coconut, kunafa, butter, condensed milk.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-rose-800">$30.00</span>
+                            <span class="text-xs text-gray-500">Box of 8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Head over HEELS Dates -->
+                <div class="group bg-rose-50 rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.grocery.com/2e58ec6cf2cdf3d929784aeb75546622723079c4.jpg" alt="Head over HEELS Dates" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Head over HEELS Dates (8pcs)', 30, 'Dates, Belgian chocolate, Nutella, kunafa, butter')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-lg font-bold mb-2 text-rose-900">Head over HEELS Dates</h3>
+                        <p class="text-gray-600 text-sm mb-4">Dates, Belgian chocolate, Nutella, kunafa, butter.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-rose-800">$30.00</span>
+                            <span class="text-xs text-gray-500">Box of 8</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Everjoy Fruits Section -->
+    <section id="fruits" class="py-24 bg-rose-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 scroll-reveal">
+                <span class="text-rose-600 font-semibold tracking-wider uppercase text-sm">Fruit & Nut</span>
+                <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-4 mb-6 text-rose-900">Everjoy Fruits & Nuts</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Fresh fruits and premium nuts enrobed in Belgian chocolate. $15 per bar/box.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Fig Delight -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/hedonistchocolates.com/b5b7dbb664a2f2cc6a6b498b34d2040154f05c6a.jpg" alt="Fig Delight" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Fig Delight', 15, 'Figs, Belgian chocolate')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Fig Delight</h3>
+                        <p class="text-gray-600 text-sm mb-4">Whole figs enrobed in premium Belgian chocolate. Naturally sweet.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-rose-800">$15.00</span>
+                            <button onclick="addToCart('Fig Delight', 15, 'Figs, Belgian chocolate')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strawberry Delight -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/aliartsweet.com/4f87eef485c8cee25a98c5d070502a9288df785f.jpg" alt="Strawberry Delight" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Strawberry Delight', 15, 'Fresh strawberries, Belgian chocolate')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold">FRESH</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Strawberry Delight</h3>
+                        <p class="text-gray-600 text-sm mb-4">Fresh strawberries dipped in Belgian milk, dark, or white chocolate.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-rose-800">$15.00</span>
+                            <button onclick="addToCart('Strawberry Delight', 15, 'Fresh strawberries, Belgian chocolate')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Apricot Delight -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1596386461350-326ea77d337b?w=600&q=80" alt="Apricot Delight" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Apricot Delight', 15, 'Dried apricots, Belgian chocolate')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Apricot Delight</h3>
+                        <p class="text-gray-600 text-sm mb-4">Tangy dried apricots coated in smooth Belgian chocolate.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-rose-800">$15.00</span>
+                            <button onclick="addToCart('Apricot Delight', 15, 'Dried apricots, Belgian chocolate')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Raspberry Delight -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&q=80" alt="Raspberry Delight" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Raspberry Delight', 15, 'Raspberry ganache, Belgian chocolate')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Raspberry Delight</h3>
+                        <p class="text-gray-600 text-sm mb-4">Raspberry ganache enrobed in Belgian chocolate. Tart and sweet.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-rose-800">$15.00</span>
+                            <button onclick="addToCart('Raspberry Delight', 15, 'Raspberry ganache, Belgian chocolate')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sunrise Bites -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&q=80" alt="Sunrise Bites" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Sunrise Bites', 15, 'Orange ganache, Belgian chocolate')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Sunrise Bites</h3>
+                        <p class="text-gray-600 text-sm mb-4">Orange ganache in Belgian chocolate. Citrusy and bright.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-rose-800">$15.00</span>
+                            <button onclick="addToCart('Sunrise Bites', 15, 'Orange ganache, Belgian chocolate')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- I DARE YOU -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1511381939415-e44015466834?w=600&q=80" alt="I DARE YOU" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('I DARE YOU', 15, 'Orange ganache, chili spices, Belgian chocolate')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-bold">SPICY</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">I DARE YOU</h3>
+                        <p class="text-gray-600 text-sm mb-4">Orange ganache with chili spices in Belgian chocolate. For the brave!</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-rose-800">$15.00</span>
+                            <button onclick="addToCart('I DARE YOU', 15, 'Orange ganache, chili spices, Belgian chocolate')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Go NUTS Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 scroll-reveal">
+                <span class="text-rose-600 font-semibold tracking-wider uppercase text-sm">Pure Indulgence</span>
+                <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-4 mb-6 text-rose-900">Go NUTS!</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Premium nuts enrobed in rich Belgian chocolate. $15 per bar.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Hazelnut -->
+                <div class="group bg-rose-50 rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&q=80" alt="Hazelnut Bar" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Hazelnut Bar', 15, 'Hazelnuts, Belgian chocolate')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-orange-100 text-orange-800 allergen-badge">🌰 Nuts</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Hazelnut Bar</h3>
+                        <p class="text-gray-600 text-sm mb-4">Whole hazelnuts embedded in smooth Belgian chocolate.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-rose-800">$15.00</span>
+                            <button onclick="addToCart('Hazelnut Bar', 15, 'Hazelnuts, Belgian chocolate')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Almond -->
+                <div class="group bg-rose-50 rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&q=80" alt="Almond Bar" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Almond Bar', 15, 'Almonds, Belgian chocolate')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Almond Bar</h3>
+                        <p class="text-gray-600 text-sm mb-4">Crunchy almonds in rich Belgian chocolate. Classic favorite.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-rose-800">$15.00</span>
+                            <button onclick="addToCart('Almond Bar', 15, 'Almonds, Belgian chocolate')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pistachio -->
+                <div class="group bg-rose-50 rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/images.squarespace-cdn.com/92a72963716f9cef933c759dad8b222e63851586.jpg" alt="Pistachio Bar" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Pistachio Bar', 15, 'Pistachios, Belgian chocolate')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold">PREMIUM</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Pistachio Bar</h3>
+                        <p class="text-gray-600 text-sm mb-4">Premium pistachios in Belgian chocolate. The green gold.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-rose-800">$15.00</span>
+                            <button onclick="addToCart('Pistachio Bar', 15, 'Pistachios, Belgian chocolate')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pecan -->
+                <div class="group bg-rose-50 rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&q=80" alt="Pecan Bar" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Pecan Bar', 15, 'Pecans, Belgian chocolate')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Pecan Bar</h3>
+                        <p class="text-gray-600 text-sm mb-4">Buttery pecans in Belgian chocolate. Southern charm.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-rose-800">$15.00</span>
+                            <button onclick="addToCart('Pecan Bar', 15, 'Pecans, Belgian chocolate')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Everjoy Moments (Cookies & Lazy Cake) -->
+    <section id="moments" class="py-24 bg-rose-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 scroll-reveal">
+                <span class="text-rose-600 font-semibold tracking-wider uppercase text-sm">Special Treats</span>
+                <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-4 mb-6 text-rose-900">Everjoy Moments</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Gourmet cookies and our famous lazy cake for those sweet moments.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-lg scroll-reveal">
-                    <div class="flex text-gold-400 mb-4">
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                <!-- Out of this WORLD Cookies -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/gingerbreadusa.com/4bb94b44dce3965a208e35765d4d115e3bcd897e.png" alt="Out of this WORLD Cookies" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Out of this WORLD Cookies', 18, 'Nutella cookies with brown sugar and Belgian chocolate')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
                     </div>
-                    <p class="text-chocolate-600 mb-6 italic">"The salted caramel truffles are absolutely divine! Fast shipping and beautiful packaging. Will definitely order again for my mother's birthday."</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-chocolate-200 flex items-center justify-center font-bold text-chocolate-800">JD</div>
-                        <div>
-                            <p class="font-bold text-chocolate-900">Jessica Davis</p>
-                            <p class="text-sm text-chocolate-500">Verified Buyer</p>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Out of this WORLD!</h3>
+                        <p class="text-gray-600 text-sm mb-4">Brown sugar, Nutella, all-purpose flour, eggs, butter, vanilla, baking soda, salt. Soft and chewy.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-rose-800">$18.00</span>
+                            <button onclick="addToCart('Out of this WORLD Cookies', 18, 'Nutella cookies with brown sugar and Belgian chocolate')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
+                                Add
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white p-8 rounded-2xl shadow-lg scroll-reveal">
-                    <div class="flex text-gold-400 mb-4">
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                <!-- Biscuit Love Cookies -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/carolscookies.com/2b8780548efd983323d85814ac71f53be694d17a.jpg" alt="Biscuit Love Cookies" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Biscuit Love Cookies', 18, 'Biscoff cream cookies with Belgian chocolate')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
                     </div>
-                    <p class="text-chocolate-600 mb-6 italic">"We ordered 100 custom boxes for our company anniversary. The team at EverJoy was fantastic to work with and the chocolates were a huge hit!"</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-chocolate-200 flex items-center justify-center font-bold text-chocolate-800">MR</div>
-                        <div>
-                            <p class="font-bold text-chocolate-900">Michael Roberts</p>
-                            <p class="text-sm text-chocolate-500">CEO, TechStart Inc.</p>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Biscuit Love</h3>
+                        <p class="text-gray-600 text-sm mb-4">Biscoff cream, brown sugar, butter, eggs, vanilla, flour, salt, baking powder, Belgian chocolate.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-rose-800">$18.00</span>
+                            <button onclick="addToCart('Biscuit Love Cookies', 18, 'Biscoff cream cookies with Belgian chocolate')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
+                                Add
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white p-8 rounded-2xl shadow-lg scroll-reveal">
-                    <div class="flex text-gold-400 mb-4">
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                <!-- Lazy Cake -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/rockinmama.net/aa5e1acb7b845fc2670dd74afd8c2be97d83cd32.jpg" alt="Lazy Cake" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Lazy Cake', 22, 'Belgian chocolate lazy cake with biscuits')" class="p-3 bg-white rounded-full hover:bg-rose-600 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-rose-600 text-white px-3 py-1 rounded-full text-xs font-bold">NO BAKE</div>
                     </div>
-                    <p class="text-chocolate-600 mb-6 italic">"Finally, a vegan chocolate that doesn't compromise on taste! The 85% dark collection is my new guilty pleasure. Love the sustainable packaging too."</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-chocolate-200 flex items-center justify-center font-bold text-chocolate-800">AL</div>
-                        <div>
-                            <p class="font-bold text-chocolate-900">Amanda Lee</p>
-                            <p class="text-sm text-chocolate-500">Verified Buyer</p>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-rose-900">Lazy Cake</h3>
+                        <p class="text-gray-600 text-sm mb-4">Belgian chocolate, biscuits. No-bake chocolate biscuit cake. Rich and fudgy.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-rose-800">$22.00</span>
+                            <button onclick="addToCart('Lazy Cake', 22, 'Belgian chocolate lazy cake with biscuits')" class="px-4 py-2 bg-rose-800 text-white rounded-lg hover:bg-rose-900 transition-colors text-sm font-semibold">
+                                Add
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Allergen Info -->
+    <section class="py-12 bg-rose-100">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h3 class="font-serif text-2xl font-bold text-rose-900 mb-6">Allergen Information</h3>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="allergen-badge bg-orange-100 text-orange-800 text-sm">🌰 Contains Nuts</span>
+                <span class="allergen-badge bg-yellow-100 text-yellow-800 text-sm">🌾 Contains Gluten</span>
+                <span class="allergen-badge bg-blue-100 text-blue-800 text-sm">🥛 Contains Dairy</span>
+                <span class="allergen-badge bg-purple-100 text-purple-800 text-sm">🫘 Contains Soy</span>
+                <span class="allergen-badge bg-green-100 text-green-800 text-sm">🥚 Contains Eggs</span>
+            </div>
+            <p class="text-sm text-gray-600 mt-4">All products made in a facility that processes nuts, gluten, dairy, and soy.</p>
         </div>
     </section>
 
@@ -625,155 +953,129 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="grid lg:grid-cols-2 gap-16">
                 <div class="scroll-reveal">
-                    <span class="text-gold-600 font-semibold tracking-wider uppercase text-sm">Get in Touch</span>
-                    <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-4 mb-6 text-chocolate-900">Visit Our Atelier</h2>
-                    <p class="text-chocolate-600 mb-8 text-lg">Have questions about our chocolates or want to place a custom order? We'd love to hear from you.</p>
+                    <span class="text-rose-600 font-semibold tracking-wider uppercase text-sm">Get in Touch</span>
+                    <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-4 mb-6 text-rose-900">Order Your Favorites</h2>
+                    <p class="text-gray-600 mb-8 text-lg">We accept orders through WhatsApp for fastest response. Delivery available across the city.</p>
                     
                     <div class="space-y-6">
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 bg-chocolate-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="map-pin" class="w-6 h-6 text-chocolate-800"></i>
+                        <a href="https://wa.me/17785491630" target="_blank" class="flex items-start gap-4 p-4 bg-green-50 rounded-xl hover:bg-green-100 transition-colors group">
+                            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <i data-lucide="message-circle" class="w-6 h-6 text-white"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-chocolate-900 mb-1">Location</h4>
-                                <p class="text-chocolate-600">123 Cocoa Avenue, Artisan District<br>New York, NY 10001</p>
+                                <h4 class="font-bold text-gray-900 mb-1">WhatsApp Order</h4>
+                                <p class="text-green-700 font-semibold">+1 (778) 549-1630</p>
+                                <p class="text-sm text-gray-600">Fastest response time</p>
+                            </div>
+                        </a>
+                        
+                        <div class="flex items-start gap-4 p-4 bg-rose-50 rounded-xl">
+                            <div class="w-12 h-12 bg-rose-200 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="instagram" class="w-6 h-6 text-rose-800"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Instagram</h4>
+                                <p class="text-rose-700 font-semibold">@everjoychocolate</p>
+                                <p class="text-sm text-gray-600">Follow us for daily updates</p>
                             </div>
                         </div>
                         
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 bg-chocolate-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="mail" class="w-6 h-6 text-chocolate-800"></i>
+                        <div class="flex items-start gap-4 p-4 bg-amber-50 rounded-xl">
+                            <div class="w-12 h-12 bg-amber-200 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="truck" class="w-6 h-6 text-amber-800"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-chocolate-900 mb-1">Email</h4>
-                                <p class="text-chocolate-600">hello@everjoychocolate.com</p>
+                                <h4 class="font-bold text-gray-900 mb-1">Delivery</h4>
+                                <p class="text-gray-700">Available across metro area</p>
+                                <p class="text-sm text-gray-600">Free delivery on orders $50+</p>
                             </div>
                         </div>
-                        
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 bg-chocolate-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="phone" class="w-6 h-6 text-chocolate-800"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-chocolate-900 mb-1">Phone</h4>
-                                <p class="text-chocolate-600">+1 (555) 123-4567</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-8 flex gap-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-chocolate-100 flex items-center justify-center hover:bg-chocolate-800 hover:text-white transition-colors">
-                            <i data-lucide="instagram" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-chocolate-100 flex items-center justify-center hover:bg-chocolate-800 hover:text-white transition-colors">
-                            <i data-lucide="facebook" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-chocolate-100 flex items-center justify-center hover:bg-chocolate-800 hover:text-white transition-colors">
-                            <i data-lucide="twitter" class="w-5 h-5"></i>
-                        </a>
                     </div>
                 </div>
 
-                <div class="bg-chocolate-50 p-8 rounded-2xl scroll-reveal">
+                <div class="bg-rose-50 p-8 rounded-2xl scroll-reveal">
+                    <h3 class="font-serif text-2xl font-bold text-rose-900 mb-6">Send a Message</h3>
                     <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-medium text-chocolate-700 mb-2">First Name</label>
-                                <input type="text" required class="w-full px-4 py-3 rounded-lg border border-chocolate-200 bg-white focus:border-gold-500 transition-colors" placeholder="John">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                                <input type="text" required class="w-full px-4 py-3 rounded-lg border border-rose-200 bg-white focus:border-rose-500 transition-colors" placeholder="Your name">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-chocolate-700 mb-2">Last Name</label>
-                                <input type="text" required class="w-full px-4 py-3 rounded-lg border border-chocolate-200 bg-white focus:border-gold-500 transition-colors" placeholder="Doe">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                                <input type="tel" required class="w-full px-4 py-3 rounded-lg border border-rose-200 bg-white focus:border-rose-500 transition-colors" placeholder="Your number">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-chocolate-700 mb-2">Email</label>
-                            <input type="email" required class="w-full px-4 py-3 rounded-lg border border-chocolate-200 bg-white focus:border-gold-500 transition-colors" placeholder="john@example.com">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 rounded-lg border border-rose-200 bg-white focus:border-rose-500 transition-colors" placeholder="your@email.com">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-chocolate-700 mb-2">Subject</label>
-                            <select class="w-full px-4 py-3 rounded-lg border border-chocolate-200 bg-white focus:border-gold-500 transition-colors">
-                                <option>General Inquiry</option>
-                                <option>Custom Order</option>
-                                <option>Corporate Gifting</option>
-                                <option>Wholesale</option>
-                            </select>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Order Details</label>
+                            <textarea rows="4" required class="w-full px-4 py-3 rounded-lg border border-rose-200 bg-white focus:border-rose-500 transition-colors" placeholder="What would you like to order?"></textarea>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-chocolate-700 mb-2">Message</label>
-                            <textarea rows="4" required class="w-full px-4 py-3 rounded-lg border border-chocolate-200 bg-white focus:border-gold-500 transition-colors" placeholder="Tell us about your inquiry..."></textarea>
-                        </div>
-                        <button type="submit" class="w-full py-4 bg-chocolate-800 text-white font-semibold rounded-lg hover:bg-chocolate-900 transition-colors flex items-center justify-center gap-2">
-                            <span>Send Message</span>
+                        <button type="submit" class="w-full py-4 bg-rose-800 text-white font-semibold rounded-lg hover:bg-rose-900 transition-colors flex items-center justify-center gap-2">
+                            <span>Send Order Request</span>
                             <i data-lucide="send" class="w-5 h-5"></i>
                         </button>
+                        <p class="text-xs text-center text-gray-500">We'll respond via WhatsApp within 2 hours</p>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter -->
-    <section class="py-16 bg-gold-500">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h3 class="font-serif text-3xl font-bold text-white mb-4">Join the EverJoy Club</h3>
-            <p class="text-white/90 mb-8">Subscribe for exclusive offers, new flavor announcements, and chocolate pairing tips.</p>
-            <form onsubmit="handleNewsletterSubmit(event)" class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-                <input type="email" required placeholder="Enter your email" class="flex-1 px-6 py-4 rounded-full border-0 focus:ring-2 focus:ring-white/50 text-chocolate-900">
-                <button type="submit" class="px-8 py-4 bg-chocolate-900 text-white font-semibold rounded-full hover:bg-chocolate-800 transition-colors whitespace-nowrap">
-                    Subscribe
-                </button>
-            </form>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer class="bg-chocolate-900 text-white py-16">
+    <footer class="bg-rose-900 text-white py-16">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="grid md:grid-cols-4 gap-12 mb-12">
                 <div>
                     <div class="flex items-center gap-2 mb-6">
-                        <div class="w-10 h-10 rounded-full gold-gradient flex items-center justify-center">
-                            <i data-lucide="candy" class="w-6 h-6 text-white"></i>
+                        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+                            <i data-lucide="heart" class="w-6 h-6 text-rose-900"></i>
                         </div>
-                        <span class="font-serif text-2xl font-bold">EverJoy<span class="text-gold-400">Chocolate</span></span>
+                        <span class="font-serif text-2xl font-bold">EVERJOY</span>
                     </div>
-                    <p class="text-chocolate-300 text-sm leading-relaxed">Crafting moments of joy through ethically sourced, artisan chocolates. Every bite tells a story of sustainability and passion.</p>
+                    <p class="text-rose-200 text-sm leading-relaxed">Artisan Belgian chocolates with Mediterranean soul. Handcrafted with love for every occasion.</p>
                 </div>
                 
                 <div>
                     <h4 class="font-bold text-lg mb-6">Quick Links</h4>
-                    <ul class="space-y-3 text-chocolate-300">
-                        <li><a href="#collections" class="hover:text-gold-400 transition-colors">Shop All</a></li>
-                        <li><a href="#gifting" class="hover:text-gold-400 transition-colors">Gift Boxes</a></li>
-                        <li><a href="#story" class="hover:text-gold-400 transition-colors">Our Story</a></li>
-                        <li><a href="#" class="hover:text-gold-400 transition-colors">Blog</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-bold text-lg mb-6">Customer Care</h4>
-                    <ul class="space-y-3 text-chocolate-300">
-                        <li><a href="#" class="hover:text-gold-400 transition-colors">Shipping Info</a></li>
-                        <li><a href="#" class="hover:text-gold-400 transition-colors">Returns</a></li>
-                        <li><a href="#" class="hover:text-gold-400 transition-colors">FAQ</a></li>
-                        <li><a href="#contact" class="hover:text-gold-400 transition-colors">Contact Us</a></li>
+                    <ul class="space-y-3 text-rose-200">
+                        <li><a href="#collections" class="hover:text-white transition-colors">Mediterranean Bars</a></li>
+                        <li><a href="#collections" class="hover:text-white transition-colors">Bites & Dates</a></li>
+                        <li><a href="#fruits" class="hover:text-white transition-colors">Fruits & Nuts</a></li>
+                        <li><a href="#moments" class="hover:text-white transition-colors">Everjoy Moments</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="font-bold text-lg mb-6">Contact</h4>
-                    <ul class="space-y-3 text-chocolate-300">
-                        <li>hello@everjoychocolate.com</li>
-                        <li>+1 (555) 123-4567</li>
-                        <li>123 Cocoa Avenue<br>New York, NY 10001</li>
+                    <ul class="space-y-3 text-rose-200">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="message-circle" class="w-4 h-4"></i>
+                            WhatsApp: +1 (778) 549-1630
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                            @everjoychocolate
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Hours</h4>
+                    <ul class="space-y-3 text-rose-200">
+                        <li>Mon - Fri: 9am - 7pm</li>
+                        <li>Sat - Sun: 10am - 6pm</li>
+                        <li>Same-day delivery available</li>
                     </ul>
                 </div>
             </div>
             
-            <div class="border-t border-chocolate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-chocolate-400 text-sm">&copy; 2024 EverJoyChocolate. All rights reserved.</p>
-                <div class="flex gap-6 text-sm text-chocolate-400">
+            <div class="border-t border-rose-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-rose-300 text-sm">&copy; 2026 EverJoyChocolate. All rights reserved.</p>
+                <div class="flex gap-6 text-sm text-rose-300">
                     <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
                     <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
                 </div>
@@ -782,7 +1084,7 @@
     </footer>
 
     <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-8 right-8 bg-chocolate-800 text-white px-6 py-4 rounded-lg shadow-2xl transform translate-y-24 transition-transform duration-300 z-50 flex items-center gap-3">
+    <div id="toast" class="fixed bottom-8 right-8 bg-rose-800 text-white px-6 py-4 rounded-lg shadow-2xl transform translate-y-24 transition-transform duration-300 z-50 flex items-center gap-3">
         <i data-lucide="check-circle" class="w-5 h-5 text-green-400"></i>
         <span id="toast-message">Item added to cart!</span>
     </div>
@@ -794,12 +1096,12 @@
         // Shopping Cart Logic
         let cart = [];
         
-        function addToCart(name, price) {
+        function addToCart(name, price, description) {
             const existingItem = cart.find(item => item.name === name);
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
-                cart.push({ name, price, quantity: 1 });
+                cart.push({ name, price, description, quantity: 1 });
             }
             updateCartUI();
             showToast(`${name} added to cart!`);
@@ -825,34 +1127,38 @@
         function updateCartUI() {
             const cartCount = document.getElementById('cart-count');
             const cartItems = document.getElementById('cart-items');
+            const cartSubtotal = document.getElementById('cart-subtotal');
             const cartTotal = document.getElementById('cart-total');
             
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             cartCount.textContent = totalItems;
             
             if (cart.length === 0) {
-                cartItems.innerHTML = '<p class="text-chocolate-500 text-center py-8">Your cart is empty</p>';
+                cartItems.innerHTML = '<p class="text-gray-500 text-center py-8">Your cart is empty</p>';
+                cartSubtotal.textContent = '$0.00';
                 cartTotal.textContent = '$0.00';
             } else {
                 cartItems.innerHTML = cart.map(item => `
-                    <div class="flex items-center gap-4 bg-chocolate-50 p-4 rounded-lg">
+                    <div class="flex items-center gap-4 bg-rose-50 p-4 rounded-lg">
                         <div class="flex-1">
-                            <h4 class="font-bold text-chocolate-900">${item.name}</h4>
-                            <p class="text-sm text-chocolate-600">$${item.price.toFixed(2)} each</p>
+                            <h4 class="font-bold text-gray-900">${item.name}</h4>
+                            <p class="text-xs text-gray-600 line-clamp-1">${item.description}</p>
+                            <p class="text-sm font-semibold text-rose-800 mt-1">$${item.price.toFixed(2)}</p>
                         </div>
                         <div class="flex items-center gap-2">
-                            <button onclick="updateQuantity('${item.name}', -1)" class="w-8 h-8 rounded-full bg-white border border-chocolate-200 flex items-center justify-center hover:bg-chocolate-100">-</button>
+                            <button onclick="updateQuantity('${item.name}', -1)" class="w-8 h-8 rounded-full bg-white border border-rose-200 flex items-center justify-center hover:bg-rose-100 text-rose-800 font-bold">-</button>
                             <span class="w-8 text-center font-semibold">${item.quantity}</span>
-                            <button onclick="updateQuantity('${item.name}', 1)" class="w-8 h-8 rounded-full bg-white border border-chocolate-200 flex items-center justify-center hover:bg-chocolate-100">+</button>
+                            <button onclick="updateQuantity('${item.name}', 1)" class="w-8 h-8 rounded-full bg-white border border-rose-200 flex items-center justify-center hover:bg-rose-100 text-rose-800 font-bold">+</button>
                         </div>
-                        <button onclick="removeFromCart('${item.name}')" class="text-red-500 hover:text-red-700">
+                        <button onclick="removeFromCart('${item.name}')" class="text-red-500 hover:text-red-700 p-1">
                             <i data-lucide="trash-2" class="w-5 h-5"></i>
                         </button>
                     </div>
                 `).join('');
                 
-                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                cartTotal.textContent = `$${total.toFixed(2)}`;
+                const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+                cartTotal.textContent = `$${subtotal.toFixed(2)}`;
                 lucide.createIcons();
             }
         }
@@ -879,8 +1185,22 @@
                 showToast('Your cart is empty!');
                 return;
             }
-            showToast('Proceeding to checkout...');
-            // In a real app, this would redirect to checkout
+            
+            // Generate WhatsApp message
+            let message = "Hello! I'd like to order:\n\n";
+            let total = 0;
+            
+            cart.forEach(item => {
+                message += `• ${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
+                total += item.price * item.quantity;
+            });
+            
+            message += `\nTotal: $${total.toFixed(2)}\n\nPlease confirm availability. Thank you!`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/17785491630?text=${encodedMessage}`, '_blank');
+            
+            showToast('Opening WhatsApp...');
         }
 
         // Mobile Menu
@@ -903,13 +1223,7 @@
         // Form Submissions
         function handleContactSubmit(e) {
             e.preventDefault();
-            showToast('Message sent successfully! We\'ll be in touch soon.');
-            e.target.reset();
-        }
-
-        function handleNewsletterSubmit(e) {
-            e.preventDefault();
-            showToast('Welcome to the EverJoy Club!');
+            showToast('Order request sent! We\'ll WhatsApp you soon.');
             e.target.reset();
         }
 
@@ -949,7 +1263,6 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    // Close mobile menu if open
                     document.getElementById('mobile-menu').classList.add('hidden');
                 }
             });
