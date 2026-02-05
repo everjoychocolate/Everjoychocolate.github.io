@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EverJoyChocolate | Artisan Premium Chocolates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        chocolate: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#a1887f',
+                            600: '#8d6e63',
+                            700: '#6d4c41',
+                            800: '#4e342e',
+                            900: '#3e2723',
+                        },
+                        gold: {
+                            400: '#d4af37',
+                            500: '#c5a028',
+                            600: '#b8941f',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'slide-in': 'slideIn 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .chocolate-gradient {
+            background: linear-gradient(135deg, #3e2723 0%, #6d4c41 50%, #8d6e63 100%);
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #d4af37 0%, #f4e5c2 50%, #d4af37 100%);
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+        .product-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans text-chocolate-900 bg-chocolate-50 antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-full gold-gradient flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <i data-lucide="candy" class="w-6 h-6 text-white"></i>
+                </div>
+                <span class="font-serif text-2xl font-bold text-chocolate-900 tracking-tight">EverJoy<span class="text-gold-500">Chocolate</span></span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#home" class="text-sm font-medium hover:text-gold-600 transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gold-500 after:transition-all hover:after:w-full">Home</a>
+                <a href="#collections" class="text-sm font-medium hover:text-gold-600 transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gold-500 after:transition-all hover:after:w-full">Collections</a>
+                <a href="#story" class="text-sm font-medium hover:text-gold-600 transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gold-500 after:transition-all hover:after:w-full">Our Story</a>
+                <a href="#gifting" class="text-sm font-medium hover:text-gold-600 transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gold-500 after:transition-all hover:after:w-full">Gifting</a>
+                <a href="#contact" class="text-sm font-medium hover:text-gold-600 transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gold-500 after:transition-all hover:after:w-full">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button onclick="toggleCart()" class="relative p-2 hover:bg-chocolate-100 rounded-full transition-colors">
+                    <i data-lucide="shopping-bag" class="w-6 h-6 text-chocolate-800"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 w-5 h-5 bg-gold-500 text-white text-xs rounded-full flex items-center justify-center font-bold">0</span>
+                </button>
+                <button class="md:hidden p-2" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-chocolate-100">
+            <div class="flex flex-col p-6 gap-4">
+                <a href="#home" class="text-lg font-medium py-2 border-b border-chocolate-100">Home</a>
+                <a href="#collections" class="text-lg font-medium py-2 border-b border-chocolate-100">Collections</a>
+                <a href="#story" class="text-lg font-medium py-2 border-b border-chocolate-100">Our Story</a>
+                <a href="#gifting" class="text-lg font-medium py-2 border-b border-chocolate-100">Gifting</a>
+                <a href="#contact" class="text-lg font-medium py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="toggleCart()"></div>
+        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl transform transition-transform duration-300 translate-x-full" id="cart-panel">
+            <div class="p-6 h-full flex flex-col">
+                <div class="flex justify-between items-center mb-6 border-b border-chocolate-100 pb-4">
+                    <h3 class="font-serif text-2xl font-bold">Your Cart</h3>
+                    <button onclick="toggleCart()" class="p-2 hover:bg-chocolate-100 rounded-full">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+                <div id="cart-items" class="flex-1 overflow-y-auto space-y-4">
+                    <p class="text-chocolate-500 text-center py-8">Your cart is empty</p>
+                </div>
+                <div class="border-t border-chocolate-100 pt-4 mt-4">
+                    <div class="flex justify-between mb-4 text-lg font-bold">
+                        <span>Total</span>
+                        <span id="cart-total">$0.00</span>
+                    </div>
+                    <button onclick="checkout()" class="w-full py-4 bg-chocolate-800 text-white font-semibold rounded-lg hover:bg-chocolate-900 transition-colors flex items-center justify-center gap-2">
+                        <span>Proceed to Checkout</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-20">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-br from-chocolate-900/90 via-chocolate-800/80 to-chocolate-900/90 z-10"></div>
+            <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=1920&q=80" alt="Luxury Chocolate" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
+            <div class="text-white space-y-8 animate-fade-in-up">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
+                    <span class="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+                    <span class="text-sm font-medium tracking-wide">Artisan Crafted Since 2024</span>
+                </div>
+                <h1 class="font-serif text-5xl lg:text-7xl font-bold leading-tight text-shadow">
+                    Indulge in <br/>
+                    <span class="text-transparent bg-clip-text gold-gradient">Pure Bliss</span>
+                </h1>
+                <p class="text-lg text-chocolate-100 max-w-lg leading-relaxed">
+                    Experience the art of chocolate making with our ethically sourced, handcrafted premium chocolates. Each piece tells a story of passion, sustainability, and extraordinary flavor.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#collections" class="px-8 py-4 bg-gold-500 text-white font-semibold rounded-full hover:bg-gold-600 transition-all transform hover:scale-105 shadow-lg hover:shadow-gold-500/30 flex items-center gap-2">
+                        <span>Shop Collection</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#story" class="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-all backdrop-blur-sm">
+                        Our Story
+                    </a>
+                </div>
+                <div class="flex items-center gap-8 pt-8 border-t border-white/20">
+                    <div>
+                        <p class="text-3xl font-bold text-gold-400">15+</p>
+                        <p class="text-sm text-chocolate-200">Unique Flavors</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-bold text-gold-400">100%</p>
+                        <p class="text-sm text-chocolate-200">Ethical Sourcing</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-bold text-gold-400">5k+</p>
+                        <p class="text-sm text-chocolate-200">Happy Customers</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative hidden lg:block">
+                <div class="relative animate-float">
+                    <div class="absolute inset-0 bg-gold-400/20 rounded-full blur-3xl transform scale-110"></div>
+                    <img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=800&q=80" alt="Premium Chocolate Box" class="relative rounded-2xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                </div>
+                <div class="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl max-w-xs animate-fade-in-up" style="animation-delay: 0.3s">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="flex text-gold-400">
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        </div>
+                        <span class="font-bold text-chocolate-900">4.9</span>
+                    </div>
+                    <p class="text-sm text-chocolate-600 italic">"The most exquisite chocolate I've ever tasted. Truly a luxurious experience!"</p>
+                    <p class="text-xs text-chocolate-400 mt-2 font-medium">— Sarah M., Verified Buyer</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#collections" class="text-white/70 hover:text-white transition-colors">
+                <i data-lucide="chevron-down" class="w-8 h-8"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Bar -->
+    <section class="py-8 bg-white border-b border-chocolate-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="flex items-center gap-3 justify-center">
+                    <i data-lucide="leaf" class="w-6 h-6 text-green-600"></i>
+                    <span class="text-sm font-medium">Sustainable Packaging</span>
+                </div>
+                <div class="flex items-center gap-3 justify-center">
+                    <i data-lucide="truck" class="w-6 h-6 text-chocolate-600"></i>
+                    <span class="text-sm font-medium">Free Shipping $50+</span>
+                </div>
+                <div class="flex items-center gap-3 justify-center">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-gold-500"></i>
+                    <span class="text-sm font-medium">Quality Guaranteed</span>
+                </div>
+                <div class="flex items-center gap-3 justify-center">
+                    <i data-lucide="heart" class="w-6 h-6 text-red-500"></i>
+                    <span class="text-sm font-medium">Handcrafted with Love</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section id="collections" class="py-24 bg-chocolate-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 scroll-reveal">
+                <span class="text-gold-600 font-semibold tracking-wider uppercase text-sm">Our Selection</span>
+                <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-4 mb-6 text-chocolate-900">Signature Collections</h2>
+                <p class="text-chocolate-600 max-w-2xl mx-auto text-lg">Discover our curated range of artisan chocolates, each crafted to perfection using the finest ethically sourced cocoa beans.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&q=80" alt="Dark Truffle Collection" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Dark Truffle Collection', 24.99)" class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                            <button class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="eye" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-gold-500 text-white px-3 py-1 rounded-full text-xs font-bold">BESTSELLER</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2">Dark Truffle Collection</h3>
+                        <p class="text-chocolate-500 text-sm mb-4">Rich 70% cacao ganache centers enrobed in premium dark chocolate.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-chocolate-900">$24.99</span>
+                            <button onclick="addToCart('Dark Truffle Collection', 24.99)" class="px-4 py-2 border-2 border-chocolate-800 text-chocolate-800 rounded-lg hover:bg-chocolate-800 hover:text-white transition-colors text-sm font-semibold">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1526081347589-7fa34cc434ce?w=600&q=80" alt="Milk Chocolate Assortment" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Milk Chocolate Assortment', 19.99)" class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                            <button class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="eye" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2">Milk Chocolate Assortment</h3>
+                        <p class="text-chocolate-500 text-sm mb-4">Creamy milk chocolate with hazelnut, caramel, and praline fillings.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-chocolate-900">$19.99</span>
+                            <button onclick="addToCart('Milk Chocolate Assortment', 19.99)" class="px-4 py-2 border-2 border-chocolate-800 text-chocolate-800 rounded-lg hover:bg-chocolate-800 hover:text-white transition-colors text-sm font-semibold">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=600&q=80" alt="White Chocolate Raspberry" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('White Chocolate Raspberry', 22.99)" class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                            <button class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="eye" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold">NEW</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2">White Chocolate Raspberry</h3>
+                        <p class="text-chocolate-500 text-sm mb-4">Velvety white chocolate infused with real raspberry pieces.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-chocolate-900">$22.99</span>
+                            <button onclick="addToCart('White Chocolate Raspberry', 22.99)" class="px-4 py-2 border-2 border-chocolate-800 text-chocolate-800 rounded-lg hover:bg-chocolate-800 hover:text-white transition-colors text-sm font-semibold">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=600&q=80" alt="Salted Caramel Box" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Salted Caramel Box', 27.99)" class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                            <button class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="eye" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2">Salted Caramel Box</h3>
+                        <p class="text-chocolate-500 text-sm mb-4">Buttery caramel with sea salt in dark and milk chocolate shells.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-chocolate-900">$27.99</span>
+                            <button onclick="addToCart('Salted Caramel Box', 27.99)" class="px-4 py-2 border-2 border-chocolate-800 text-chocolate-800 rounded-lg hover:bg-chocolate-800 hover:text-white transition-colors text-sm font-semibold">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1614358760046-8ef0a6417796?w=600&q=80" alt="Vegan Dark Collection" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Vegan Dark Collection', 26.99)" class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                            <button class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="eye" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold">VEGAN</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2">Vegan Dark Collection</h3>
+                        <p class="text-chocolate-500 text-sm mb-4">Plant-based dark chocolates with 85% cacao and natural sweeteners.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-chocolate-900">$26.99</span>
+                            <button onclick="addToCart('Vegan Dark Collection', 26.99)" class="px-4 py-2 border-2 border-chocolate-800 text-chocolate-800 rounded-lg hover:bg-chocolate-800 hover:text-white transition-colors text-sm font-semibold">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover-lift product-card scroll-reveal">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1548741487-18d363dc4469?w=600&q=80" alt="Gold Gift Box" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-4">
+                            <button onclick="addToCart('Gold Gift Box', 49.99)" class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </button>
+                            <button class="p-3 bg-white rounded-full hover:bg-gold-500 hover:text-white transition-colors shadow-lg">
+                                <i data-lucide="eye" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-gold-500 text-white px-3 py-1 rounded-full text-xs font-bold">PREMIUM</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2">Gold Gift Box</h3>
+                        <p class="text-chocolate-500 text-sm mb-4">Luxurious 24-piece assortment in an elegant gold-leaf box.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-chocolate-900">$49.99</span>
+                            <button onclick="addToCart('Gold Gift Box', 49.99)" class="px-4 py-2 border-2 border-chocolate-800 text-chocolate-800 rounded-lg hover:bg-chocolate-800 hover:text-white transition-colors text-sm font-semibold">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="px-8 py-4 border-2 border-chocolate-800 text-chocolate-800 font-semibold rounded-full hover:bg-chocolate-800 hover:text-white transition-all inline-flex items-center gap-2">
+                    <span>View All Products</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="story" class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-gold-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-chocolate-100 rounded-full blur-3xl opacity-50 translate-y-1/2 -translate-x-1/2"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative scroll-reveal">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1605698802089-6d7f3e974c37?w=400&q=80" alt="Chocolate Making" class="rounded-2xl shadow-lg transform translate-y-8">
+                        <img src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=400&q=80" alt="Cocoa Beans" class="rounded-2xl shadow-lg">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-chocolate-800 text-white p-6 rounded-2xl shadow-xl">
+                        <p class="font-serif text-3xl font-bold text-gold-400">10+</p>
+                        <p class="text-sm">Years of Excellence</p>
+                    </div>
+                </div>
+                
+                <div class="scroll-reveal">
+                    <span class="text-gold-600 font-semibold tracking-wider uppercase text-sm">Our Story</span>
+                    <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-4 mb-6 text-chocolate-900">Crafting Joy Since 2014</h2>
+                    <div class="space-y-4 text-chocolate-600 leading-relaxed">
+                        <p>
+                            EverJoyChocolate began with a simple mission: to create extraordinary chocolate experiences while maintaining the highest standards of ethical sourcing and sustainability.
+                        </p>
+                        <p>
+                            We partner directly with cocoa farming cooperatives in Ecuador, Ghana, and Madagascar, ensuring fair wages and sustainable practices. Every bean is carefully selected, roasted to perfection, and transformed into artisan chocolates in our small-batch facility.
+                        </p>
+                        <p>
+                            Our master chocolatiers combine traditional techniques with innovative flavors, creating pieces that are as beautiful as they are delicious. From bean to bar, we control every step to ensure unparalleled quality.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-6 mt-8 pt-8 border-t border-chocolate-100">
+                        <div class="text-center">
+                            <i data-lucide="award" class="w-8 h-8 text-gold-500 mx-auto mb-2"></i>
+                            <p class="font-bold text-chocolate-900">Award Winning</p>
+                        </div>
+                        <div class="text-center">
+                            <i data-lucide="users" class="w-8 h-8 text-gold-500 mx-auto mb-2"></i>
+                            <p class="font-bold text-chocolate-900">Fair Trade</p>
+                        </div>
+                        <div class="text-center">
+                            <i data-lucide="recycle" class="w-8 h-8 text-gold-500 mx-auto mb-2"></i>
+                            <p class="font-bold text-chocolate-900">Eco Packaging</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gifting Section -->
+    <section id="gifting" class="py-24 bg-chocolate-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=1920&q=80" alt="Background" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div class="text-center mb-16 scroll-reveal">
+                <span class="text-gold-400 font-semibold tracking-wider uppercase text-sm">Perfect Presents</span>
+                <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-4 mb-6">Corporate & Personal Gifting</h2>
+                <p class="text-chocolate-200 max-w-2xl mx-auto text-lg">Make every occasion memorable with our bespoke chocolate gifts, customized packaging, and personalized messages.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:bg-white/20 transition-all scroll-reveal">
+                    <div class="w-14 h-14 bg-gold-500 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="gift" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-4">Custom Gift Boxes</h3>
+                    <p class="text-chocolate-200 mb-6">Create your own assortment with our build-a-box feature. Choose from 6 to 24 pieces with custom ribbon colors.</p>
+                    <button class="text-gold-400 font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                        Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:bg-white/20 transition-all scroll-reveal">
+                    <div class="w-14 h-14 bg-gold-500 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="briefcase" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-4">Corporate Orders</h3>
+                    <p class="text-chocolate-200 mb-6">Impress clients and employees with branded chocolate gifts. Volume discounts available for orders over 50 units.</p>
+                    <button class="text-gold-400 font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                        Get Quote <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:bg-white/20 transition-all scroll-reveal">
+                    <div class="w-14 h-14 bg-gold-500 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="calendar" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-4">Subscriptions</h3>
+                    <p class="text-chocolate-200 mb-6">Monthly curated selections delivered to your door. Pause or cancel anytime. Free shipping included.</p>
+                    <button class="text-gold-400 font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                        Subscribe <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 bg-chocolate-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 scroll-reveal">
+                <span class="text-gold-600 font-semibold tracking-wider uppercase text-sm">Testimonials</span>
+                <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-4 text-chocolate-900">What Our Customers Say</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg scroll-reveal">
+                    <div class="flex text-gold-400 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <p class="text-chocolate-600 mb-6 italic">"The salted caramel truffles are absolutely divine! Fast shipping and beautiful packaging. Will definitely order again for my mother's birthday."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-chocolate-200 flex items-center justify-center font-bold text-chocolate-800">JD</div>
+                        <div>
+                            <p class="font-bold text-chocolate-900">Jessica Davis</p>
+                            <p class="text-sm text-chocolate-500">Verified Buyer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg scroll-reveal">
+                    <div class="flex text-gold-400 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <p class="text-chocolate-600 mb-6 italic">"We ordered 100 custom boxes for our company anniversary. The team at EverJoy was fantastic to work with and the chocolates were a huge hit!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-chocolate-200 flex items-center justify-center font-bold text-chocolate-800">MR</div>
+                        <div>
+                            <p class="font-bold text-chocolate-900">Michael Roberts</p>
+                            <p class="text-sm text-chocolate-500">CEO, TechStart Inc.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg scroll-reveal">
+                    <div class="flex text-gold-400 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <p class="text-chocolate-600 mb-6 italic">"Finally, a vegan chocolate that doesn't compromise on taste! The 85% dark collection is my new guilty pleasure. Love the sustainable packaging too."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-chocolate-200 flex items-center justify-center font-bold text-chocolate-800">AL</div>
+                        <div>
+                            <p class="font-bold text-chocolate-900">Amanda Lee</p>
+                            <p class="text-sm text-chocolate-500">Verified Buyer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="scroll-reveal">
+                    <span class="text-gold-600 font-semibold tracking-wider uppercase text-sm">Get in Touch</span>
+                    <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-4 mb-6 text-chocolate-900">Visit Our Atelier</h2>
+                    <p class="text-chocolate-600 mb-8 text-lg">Have questions about our chocolates or want to place a custom order? We'd love to hear from you.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-chocolate-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-chocolate-800"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-chocolate-900 mb-1">Location</h4>
+                                <p class="text-chocolate-600">123 Cocoa Avenue, Artisan District<br>New York, NY 10001</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-chocolate-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="mail" class="w-6 h-6 text-chocolate-800"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-chocolate-900 mb-1">Email</h4>
+                                <p class="text-chocolate-600">hello@everjoychocolate.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-chocolate-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="phone" class="w-6 h-6 text-chocolate-800"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-chocolate-900 mb-1">Phone</h4>
+                                <p class="text-chocolate-600">+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-chocolate-100 flex items-center justify-center hover:bg-chocolate-800 hover:text-white transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-chocolate-100 flex items-center justify-center hover:bg-chocolate-800 hover:text-white transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-chocolate-100 flex items-center justify-center hover:bg-chocolate-800 hover:text-white transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-chocolate-50 p-8 rounded-2xl scroll-reveal">
+                    <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-chocolate-700 mb-2">First Name</label>
+                                <input type="text" required class="w-full px-4 py-3 rounded-lg border border-chocolate-200 bg-white focus:border-gold-500 transition-colors" placeholder="John">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-chocolate-700 mb-2">Last Name</label>
+                                <input type="text" required class="w-full px-4 py-3 rounded-lg border border-chocolate-200 bg-white focus:border-gold-500 transition-colors" placeholder="Doe">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-chocolate-700 mb-2">Email</label>
+                            <input type="email" required class="w-full px-4 py-3 rounded-lg border border-chocolate-200 bg-white focus:border-gold-500 transition-colors" placeholder="john@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-chocolate-700 mb-2">Subject</label>
+                            <select class="w-full px-4 py-3 rounded-lg border border-chocolate-200 bg-white focus:border-gold-500 transition-colors">
+                                <option>General Inquiry</option>
+                                <option>Custom Order</option>
+                                <option>Corporate Gifting</option>
+                                <option>Wholesale</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-chocolate-700 mb-2">Message</label>
+                            <textarea rows="4" required class="w-full px-4 py-3 rounded-lg border border-chocolate-200 bg-white focus:border-gold-500 transition-colors" placeholder="Tell us about your inquiry..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 bg-chocolate-800 text-white font-semibold rounded-lg hover:bg-chocolate-900 transition-colors flex items-center justify-center gap-2">
+                            <span>Send Message</span>
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-gold-500">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h3 class="font-serif text-3xl font-bold text-white mb-4">Join the EverJoy Club</h3>
+            <p class="text-white/90 mb-8">Subscribe for exclusive offers, new flavor announcements, and chocolate pairing tips.</p>
+            <form onsubmit="handleNewsletterSubmit(event)" class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                <input type="email" required placeholder="Enter your email" class="flex-1 px-6 py-4 rounded-full border-0 focus:ring-2 focus:ring-white/50 text-chocolate-900">
+                <button type="submit" class="px-8 py-4 bg-chocolate-900 text-white font-semibold rounded-full hover:bg-chocolate-800 transition-colors whitespace-nowrap">
+                    Subscribe
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-chocolate-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-10 h-10 rounded-full gold-gradient flex items-center justify-center">
+                            <i data-lucide="candy" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="font-serif text-2xl font-bold">EverJoy<span class="text-gold-400">Chocolate</span></span>
+                    </div>
+                    <p class="text-chocolate-300 text-sm leading-relaxed">Crafting moments of joy through ethically sourced, artisan chocolates. Every bite tells a story of sustainability and passion.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-chocolate-300">
+                        <li><a href="#collections" class="hover:text-gold-400 transition-colors">Shop All</a></li>
+                        <li><a href="#gifting" class="hover:text-gold-400 transition-colors">Gift Boxes</a></li>
+                        <li><a href="#story" class="hover:text-gold-400 transition-colors">Our Story</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Customer Care</h4>
+                    <ul class="space-y-3 text-chocolate-300">
+                        <li><a href="#" class="hover:text-gold-400 transition-colors">Shipping Info</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors">Returns</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors">FAQ</a></li>
+                        <li><a href="#contact" class="hover:text-gold-400 transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Contact</h4>
+                    <ul class="space-y-3 text-chocolate-300">
+                        <li>hello@everjoychocolate.com</li>
+                        <li>+1 (555) 123-4567</li>
+                        <li>123 Cocoa Avenue<br>New York, NY 10001</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-chocolate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-chocolate-400 text-sm">&copy; 2024 EverJoyChocolate. All rights reserved.</p>
+                <div class="flex gap-6 text-sm text-chocolate-400">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-8 right-8 bg-chocolate-800 text-white px-6 py-4 rounded-lg shadow-2xl transform translate-y-24 transition-transform duration-300 z-50 flex items-center gap-3">
+        <i data-lucide="check-circle" class="w-5 h-5 text-green-400"></i>
+        <span id="toast-message">Item added to cart!</span>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Shopping Cart Logic
+        let cart = [];
+        
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateCartUI();
+            showToast(`${name} added to cart!`);
+        }
+
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            updateCartUI();
+        }
+
+        function updateQuantity(name, change) {
+            const item = cart.find(item => item.name === name);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(name);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        function updateCartUI() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-chocolate-500 text-center py-8">Your cart is empty</p>';
+                cartTotal.textContent = '$0.00';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="flex items-center gap-4 bg-chocolate-50 p-4 rounded-lg">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-chocolate-900">${item.name}</h4>
+                            <p class="text-sm text-chocolate-600">$${item.price.toFixed(2)} each</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="updateQuantity('${item.name}', -1)" class="w-8 h-8 rounded-full bg-white border border-chocolate-200 flex items-center justify-center hover:bg-chocolate-100">-</button>
+                            <span class="w-8 text-center font-semibold">${item.quantity}</span>
+                            <button onclick="updateQuantity('${item.name}', 1)" class="w-8 h-8 rounded-full bg-white border border-chocolate-200 flex items-center justify-center hover:bg-chocolate-100">+</button>
+                        </div>
+                        <button onclick="removeFromCart('${item.name}')" class="text-red-500 hover:text-red-700">
+                            <i data-lucide="trash-2" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                `).join('');
+                
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartTotal.textContent = `$${total.toFixed(2)}`;
+                lucide.createIcons();
+            }
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            const panel = document.getElementById('cart-panel');
+            
+            if (sidebar.classList.contains('hidden')) {
+                sidebar.classList.remove('hidden');
+                setTimeout(() => {
+                    panel.classList.remove('translate-x-full');
+                }, 10);
+            } else {
+                panel.classList.add('translate-x-full');
+                setTimeout(() => {
+                    sidebar.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                showToast('Your cart is empty!');
+                return;
+            }
+            showToast('Proceeding to checkout...');
+            // In a real app, this would redirect to checkout
+        }
+
+        // Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.textContent = message;
+            toast.classList.remove('translate-y-24');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24');
+            }, 3000);
+        }
+
+        // Form Submissions
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            showToast('Message sent successfully! We\'ll be in touch soon.');
+            e.target.reset();
+        }
+
+        function handleNewsletterSubmit(e) {
+            e.preventDefault();
+            showToast('Welcome to the EverJoy Club!');
+            e.target.reset();
+        }
+
+        // Scroll Effects
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el));
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
